@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ping Monitor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f6f6;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    p.reload-time {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 80%;
+      margin: auto;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #dddddd;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    .online {
+      color: green;
+      font-weight: bold;
+    }
+    .offline {
+      color: red;
+      font-weight: bold;
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Live Ping Monitor</h1>
+<p class="reload-time">Page loaded at: {{ reload_time }} (Israel Time)</p>
+
+<table>
+  <tr>
+    <th>Host</th>
+    <th>IP Address</th>
+    <th>Status</th>
+    <th>Ping Time</th>
+  </tr>
+  {% for host in hosts %}
+  <tr>
+    <td>{{ host.name }}</td>
+    <td>{{ host.ip }}</td>
+    <td>
+      {% if host.status %}
+        <span class="online">✅ Ping</span>
+      {% else %}
+        <span class="offline">❌ Ping</span>
+      {% endif %}
+    </td>
+    <td>
+      {% if host.ping_time %}
+        {{ host.ping_time }}
+      {% else %}
+        N/A
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<footer>
+  Reload the page to refresh status.
+</footer>
+
+</body>
+</html>
