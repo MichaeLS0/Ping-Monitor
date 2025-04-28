@@ -26,14 +26,6 @@ Designed to showcase **DevOps**, **Dockerization**, and **lightweight monitoring
 
 ---
 
-## 📸 Screenshot
-
-![Dashboard Screenshot](https://via.placeholder.com/800x400?text=Example+Screenshot+Here)
-
-*(After upload, you can add a real screenshot here!)*
-
----
-
 ## 📋 How to Run
 
 1. Clone the repository:
